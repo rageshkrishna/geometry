@@ -7,9 +7,11 @@ build_image: shippableimages/ubuntu1204_python
 
 # remember -y
 before_install:
-    - deactivate
+    - pip freeze
+    - which python
     - shippable_retry apt-get update
     - shippable_retry apt-get install -y python-numpy python-scipy
+    - pip freeze
     
 install:
   - pip install -r requirements.txt
