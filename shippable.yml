@@ -11,7 +11,10 @@ before_install:
     - which python
     - shippable_retry apt-get update
     - shippable_retry apt-get install -y python-numpy python-scipy
+    - virtualenv --system-site-packages -p `which python2.7` $HOME/new_ve
+    - . $HOME/new_ve/bin/activate
     - pip freeze
+    - which python
     
 install:
   - pip install -r requirements.txt
