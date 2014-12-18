@@ -1,21 +1,23 @@
 language: python
 
 python:
-  - 2.7
+ - 2.6
+ - 2.7
+ - 3.2
+ - 3.3
+ - 3.4
+ - pypy
+
   
 build_image: shippableimages/ubuntu1204_python
 
 # remember -y
 before_install:
-    - pip freeze
-    - which python
     - shippable_retry apt-get update
     - shippable_retry apt-get install -y python-numpy python-scipy
     - virtualenv --system-site-packages -p `which python2.7` $HOME/new_ve
     - . $HOME/new_ve/bin/activate
-    - pip freeze
-    - which python
-    
+
 install:
   - pip install -r requirements.txt
 
