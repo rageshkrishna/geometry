@@ -1,17 +1,13 @@
 language: python
 
 python:
-  - 2.6
   - 2.7
-  - 3.2
-  - 3.3
-  - 3.4
-  - pypy
   
 build_image: shippableimages/ubuntu1204_python
 
 # remember -y
 before_install:
+    - deactivate
     - shippable_retry apt-get update
     - shippable_retry apt-get install -y python-numpy python-scipy
     
@@ -30,6 +26,6 @@ script:
   # - which python && coverage run --branch test.py
   # - which python && coverage xml -o shippable/codecoverage/coverage.xml test.py
 
-notifications:
-  email:
-   - censi@mit.edu
+#notifications:
+#  email:
+#   - censi@mit.edu
